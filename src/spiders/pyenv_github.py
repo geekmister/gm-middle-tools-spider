@@ -12,7 +12,7 @@ class PyenvGithubSpider(Spider):
     def parse(self, response: Response, **kwargs: Any) -> Any:
         list_selector = response.xpath("//a[@class='Link--primary Link']")
         for one_selector in list_selector:
-            version = one_selector.xpath("text()")
+            version = one_selector.xpath("//a[@class='Link--primary Link']/text()").extract()[0]
             print("玛德")
             print(version)
 
